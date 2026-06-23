@@ -5,45 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>조선요괴전 · 귀문 (Gwimun: Joseon Yokai Jeon)</title>
 <meta name="description" content="조선요괴전 — 한국 전통 괴담을 모티프로 한 이머시브 K-호러 체험전시. 자료 열람 페이지." />
+<meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <style>
   :root{
-    --ink:#0c0a0b;
-    --ink-2:#16110f;
-    --paper:#ece3d4;
-    --paper-dim:#b7ab97;
-    --blood:#a01122;
-    --blood-bright:#d4243a;
-    --gold:#c8a24a;
+    --ink:#0c0a0b; --ink-2:#16110f; --paper:#ece3d4; --paper-dim:#b7ab97;
+    --blood:#a01122; --blood-bright:#d4243a; --gold:#c8a24a;
     --line:rgba(200,162,74,.18);
-    --serif:"Nanum Myeongjo",serif;
-    --serif-soft:"Gowun Batang",serif;
+    --serif:"Nanum Myeongjo",serif; --serif-soft:"Gowun Batang",serif;
     --sans:"Pretendard Variable",Pretendard,system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--ink);color:var(--paper);font-family:var(--sans);
-    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
+  body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    -webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none;}
   ::selection{background:var(--blood);color:#fff}
-  img{display:block;max-width:100%}
+  img{display:block;max-width:100%;-webkit-user-drag:none;user-drag:none;pointer-events:none}
   a{color:inherit;text-decoration:none}
-
-  /* grain overlay */
-  body::after{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.05;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
 
   /* HERO */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem 4rem;overflow:hidden}
   .hero__bg{position:absolute;inset:0;z-index:0;background:#000}
-  .hero__bg img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.9) contrast(1.05);transform:scale(1.05);animation:slowzoom 22s ease-in-out infinite alternate}
-  @keyframes slowzoom{to{transform:scale(1.16)}}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.9) contrast(1.05);transform:scale(1.05);animation:slowzoom 24s ease-in-out infinite alternate}
+  @keyframes slowzoom{to{transform:scale(1.15)}}
   .hero__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 18%,transparent 0%,rgba(12,10,11,.55) 55%,var(--ink) 92%)}
   .hero__inner{position:relative;z-index:2;max-width:880px}
   .hero__logo{width:min(360px,72vw);margin:0 auto 1.6rem;filter:drop-shadow(0 8px 40px rgba(0,0,0,.6))}
@@ -54,26 +41,30 @@
   .hero__cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--paper-dim);font-size:.7rem;letter-spacing:.3em;animation:bob 2.4s ease-in-out infinite}
   @keyframes bob{50%{transform:translate(-50%,8px)}}
 
-  /* layout */
   section{padding:clamp(4.5rem,9vw,8rem) 1.5rem;max-width:1180px;margin:0 auto}
   .eyebrow{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
   .h2{font-family:var(--serif);font-weight:800;font-size:clamp(1.9rem,5vw,3rem);line-height:1.18;letter-spacing:.02em;color:#fff}
   .lede{margin-top:1.4rem;max-width:62ch;color:var(--paper-dim);font-family:var(--serif-soft);font-size:clamp(1rem,2.4vw,1.18rem)}
-
-  /* intro divider line */
   .rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 auto}
 
   /* DOCS */
   .docs-head{display:flex;flex-direction:column;gap:.4rem;margin-bottom:2.6rem}
-  .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
-  .doc{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:1.6rem;padding:2.2rem 2rem;background:linear-gradient(180deg,var(--ink-2),#0e0b0a);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .4s}
+  .view-note{margin-top:.6rem;font-size:.82rem;color:var(--paper-dim);letter-spacing:.02em;display:flex;align-items:center;gap:.5rem}
+  .view-note svg{width:15px;height:15px;flex:none;stroke:var(--gold)}
+  .docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+  .doc{position:relative;cursor:pointer;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--ink-2);transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .4s,box-shadow .4s}
   .doc:hover{transform:translateY(-6px);border-color:rgba(200,162,74,.5);box-shadow:0 24px 60px -28px rgba(160,17,34,.6)}
-  .doc__num{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.2em}
-  .doc__title{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:#fff;margin-top:.6rem}
-  .doc__desc{margin-top:.5rem;color:var(--paper-dim);font-size:.95rem}
-  .doc__cta{display:inline-flex;align-items:center;gap:.6rem;align-self:flex-start;padding:.7rem 1.4rem;border:1px solid var(--gold);border-radius:999px;color:var(--gold);font-size:.9rem;letter-spacing:.04em;transition:background .3s,color .3s}
-  .doc:hover .doc__cta{background:var(--gold);color:#0c0a0b}
-  .doc__cta svg{width:14px;height:14px}
+  .doc__thumb{aspect-ratio:16/9;background-size:cover;background-position:center;position:relative}
+  .doc__thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,11,.05),rgba(12,10,11,.85))}
+  .doc__play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+  .doc__play span{width:62px;height:62px;border-radius:50%;background:rgba(12,10,11,.5);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:background .3s,transform .3s}
+  .doc:hover .doc__play span{background:var(--gold);transform:scale(1.08)}
+  .doc__play svg{width:22px;height:22px;fill:var(--gold);margin-left:3px;transition:fill .3s}
+  .doc:hover .doc__play svg{fill:#0c0a0b}
+  .doc__meta{position:relative;z-index:2;padding:1.4rem 1.5rem 1.6rem}
+  .doc__num{font-family:var(--serif);font-size:.9rem;color:var(--gold);letter-spacing:.2em}
+  .doc__title{font-family:var(--serif);font-weight:700;font-size:1.4rem;color:#fff;margin-top:.3rem}
+  .doc__desc{margin-top:.35rem;color:var(--paper-dim);font-size:.9rem}
 
   /* CHARACTERS */
   .chars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
@@ -85,16 +76,32 @@
   .char__kr{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:#fff}
   .char__rom{margin-top:.2rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 
-  /* FOOTER */
   footer{border-top:1px solid var(--line);padding:3rem 1.5rem;text-align:center;color:var(--paper-dim)}
   footer .brand{font-family:var(--serif);color:var(--paper);font-size:1.05rem;letter-spacing:.05em}
   footer .small{margin-top:.5rem;font-size:.78rem;letter-spacing:.04em;opacity:.7}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1;transform:none}
 
-  @media(max-width:860px){.chars{grid-template-columns:repeat(2,1fr)}}
+  /* VIEWER (view-only, no download) */
+  .viewer{position:fixed;inset:0;z-index:100;background:rgba(8,6,7,.97);display:none;flex-direction:column;align-items:center;justify-content:center}
+  .viewer.open{display:flex}
+  .viewer__stage{position:relative;width:min(94vw,1600px);height:78vh;background-size:contain;background-repeat:no-repeat;background-position:center;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .viewer__shield{position:absolute;inset:0;background:transparent} /* absorbs long-press/save */
+  .viewer__wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;font-family:var(--serif);font-size:2.2rem;color:rgba(236,227,212,.05);letter-spacing:.5em;transform:rotate(-24deg);user-select:none}
+  .viewer__bar{display:flex;align-items:center;gap:1.4rem;margin-top:1.4rem;color:var(--paper)}
+  .viewer__btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--paper);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,border-color .25s}
+  .viewer__btn:hover{background:var(--gold);border-color:var(--gold);color:#0c0a0b}
+  .viewer__btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2}
+  .viewer__count{font-size:.95rem;letter-spacing:.1em;min-width:74px;text-align:center;font-variant-numeric:tabular-nums}
+  .viewer__top{position:absolute;top:1.3rem;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:0 1.6rem}
+  .viewer__label{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.06em}
+  .viewer__close{cursor:pointer;color:var(--paper);width:42px;height:42px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s}
+  .viewer__close:hover{background:var(--blood);border-color:var(--blood);color:#fff}
+  .viewer__close svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.4;fill:none}
+  .viewer__hint{margin-top:.9rem;font-size:.72rem;color:var(--paper-dim);letter-spacing:.12em;opacity:.6}
+
+  @media(max-width:860px){.chars{grid-template-columns:repeat(2,1fr)}.viewer__stage{height:62vh;width:96vw}}
 </style>
 </head>
 <body>
@@ -113,35 +120,39 @@
   <section class="reveal" id="about" style="padding-top:clamp(4rem,8vw,7rem);padding-bottom:clamp(2rem,5vw,4rem)">
     <p class="eyebrow">Project Overview</p>
     <h2 class="h2">잊혀진 조선의 요괴들이<br/>귀문(鬼門) 너머에서 깨어난다.</h2>
-    <p class="lede">구미호부터 어둑시니까지 — 한국 설화 속 여덟 요괴를 현대적 공간 연출과 함께 풀어낸 이머시브 K-호러 전시입니다. 아래에서 프로젝트 개요와 캐릭터 자료를 바로 열람할 수 있습니다.</p>
+    <p class="lede">구미호부터 어둑시니까지 — 한국 설화 속 여덟 요괴를 현대적 공간 연출과 함께 풀어낸 이머시브 K-호러 전시입니다. 아래 자료를 화면에서 바로 넘겨볼 수 있습니다.</p>
   </section>
 
   <section class="reveal" id="docs" style="padding-top:clamp(2rem,5vw,4rem)">
     <div class="docs-head">
       <p class="eyebrow">Documents</p>
       <h2 class="h2">자료 열람</h2>
+      <p class="view-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        화면에서만 열람 가능합니다 · 다운로드/저장 불가
+      </p>
     </div>
     <div class="docs">
-      <a class="doc" href="gwimun-joseon-yokai-overview.pdf" target="_blank" rel="noopener">
-        <div>
-          <div class="doc__num">01</div>
+      <div class="doc" data-doc="overview">
+        <div class="doc__thumb" style="background-image:url('assets/overview/p01.jpg')">
+          <div class="doc__play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        </div>
+        <div class="doc__meta">
+          <div class="doc__num">01 · 19 PAGES</div>
           <div class="doc__title">귀문 · 조선요괴전 개요</div>
-          <p class="doc__desc">전시 개요 · 콘셉트 · 구성 자료 (PDF)</p>
+          <div class="doc__desc">전시 개요 · 콘셉트 · 구성</div>
         </div>
-        <span class="doc__cta">자료 보기
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-      <a class="doc" href="joseon-yokai-characters.pdf" target="_blank" rel="noopener">
-        <div>
-          <div class="doc__num">02</div>
+      </div>
+      <div class="doc" data-doc="characters">
+        <div class="doc__thumb" style="background-image:url('assets/characters/p01.jpg')">
+          <div class="doc__play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        </div>
+        <div class="doc__meta">
+          <div class="doc__num">02 · 18 PAGES</div>
           <div class="doc__title">조선요괴전 캐릭터</div>
-          <p class="doc__desc">8요괴 캐릭터 디자인 자료 (PDF)</p>
+          <div class="doc__desc">8요괴 캐릭터 디자인</div>
         </div>
-        <span class="doc__cta">자료 보기
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -169,9 +180,76 @@
     <div class="small">© 조선요괴전 (Gwimun: Joseon Yokai Jeon). All rights reserved.</div>
   </footer>
 
+  <!-- VIEW-ONLY VIEWER -->
+  <div class="viewer" id="viewer" aria-hidden="true">
+    <div class="viewer__top">
+      <div class="viewer__label" id="vLabel"></div>
+      <div class="viewer__close" id="vClose" title="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+    </div>
+    <div class="viewer__stage" id="vStage">
+      <div class="viewer__wm">조선요괴전</div>
+      <div class="viewer__shield"></div>
+    </div>
+    <div class="viewer__bar">
+      <div class="viewer__btn" id="vPrev" title="이전"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></div>
+      <div class="viewer__count" id="vCount">1 / 1</div>
+      <div class="viewer__btn" id="vNext" title="다음"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+    <div class="viewer__hint">← → 키로 넘기기 · ESC 닫기</div>
+  </div>
+
   <script>
+    // ---- reveal on scroll ----
     const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // ---- view-only viewer ----
+    const DOCS={
+      overview:{label:'귀문 · 조선요괴전 개요', dir:'assets/overview', pages:19},
+      characters:{label:'조선요괴전 캐릭터', dir:'assets/characters', pages:18}
+    };
+    const viewer=document.getElementById('viewer'),
+          stage=document.getElementById('vStage'),
+          count=document.getElementById('vCount'),
+          label=document.getElementById('vLabel');
+    let cur=null, idx=1;
+
+    function pad(n){return String(n).padStart(2,'0')}
+    function show(){
+      const src=`${cur.dir}/p${pad(idx)}.jpg`;
+      stage.style.backgroundImage=`url('${src}')`;
+      count.textContent=`${idx} / ${cur.pages}`;
+      // preload neighbours
+      [idx-1,idx+1].forEach(n=>{if(n>=1&&n<=cur.pages){const im=new Image();im.src=`${cur.dir}/p${pad(n)}.jpg`}});
+    }
+    function open(key){cur=DOCS[key];idx=1;label.textContent=cur.label;viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';show();}
+    function close(){viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+    function next(){if(cur&&idx<cur.pages){idx++;show();}}
+    function prev(){if(cur&&idx>1){idx--;show();}}
+
+    document.querySelectorAll('.doc').forEach(d=>d.addEventListener('click',()=>open(d.dataset.doc)));
+    document.getElementById('vClose').addEventListener('click',close);
+    document.getElementById('vNext').addEventListener('click',next);
+    document.getElementById('vPrev').addEventListener('click',prev);
+    viewer.addEventListener('click',e=>{if(e.target===viewer)close();});
+    document.addEventListener('keydown',e=>{
+      if(!viewer.classList.contains('open'))return;
+      if(e.key==='ArrowRight')next();
+      else if(e.key==='ArrowLeft')prev();
+      else if(e.key==='Escape')close();
+    });
+    // swipe (mobile)
+    let sx=0;
+    stage.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+    stage.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(dx<-40)next();else if(dx>40)prev();},{passive:true});
+
+    // ---- deter casual download ----
+    document.addEventListener('contextmenu',e=>e.preventDefault());
+    document.addEventListener('dragstart',e=>e.preventDefault());
+    document.addEventListener('keydown',e=>{
+      const k=e.key.toLowerCase();
+      if((e.ctrlKey||e.metaKey)&&(k==='s'||k==='p'||k==='u')){e.preventDefault();}
+    });
   </script>
 </body>
 </html>
